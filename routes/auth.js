@@ -2,8 +2,7 @@ const router = require('express').Router()
 const passport = require('passport')
 
 router.get('/login', (req, res, next) => {
-    
-    res.send("login screen")
+    res.render('login')
 })
 
 router.get('/sign-up', (req, res, next) => {
