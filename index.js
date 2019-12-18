@@ -27,6 +27,7 @@ mongoose.connect(keys.mongodb.connectionString, (err) => {
 
 mongoose.Promise = global.Promise
 
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json()) 
 
 //initialize passport
