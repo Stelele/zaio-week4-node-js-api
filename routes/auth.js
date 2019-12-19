@@ -25,8 +25,8 @@ router.post('/sign-up', urlencoder, async (req, res, next) => {
             res.send(user)
        })       
 
-   } catch {
-       res.send("error hapend")
+   } catch(err) {
+       res.status(500).send(err)
    }
 })
 
@@ -35,7 +35,23 @@ router.get('/logout', (req, res, next) => {
 })
 
 router.post('/email',urlencoder, async (req, res, next) => {
-    
+    const foundUser = User.find({email: req.body.email})
+
+    if( foundUser == null){
+        res.status(400).send("Cannot find User")
+    }
+
+    try {
+       var check = await bcrypt.compare(req.body.password, foundUser.password) 
+
+       if(check){
+           res.send("You are logged In")
+       } else {
+           res.send("Incorrect Password")
+       }
+    } catch(err) {
+        res.status(500).send(err)
+    }
 
 })
 
