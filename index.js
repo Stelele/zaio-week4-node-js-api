@@ -41,7 +41,7 @@ app.use('/auth', require('./routes/auth'))
 app.use('/api', require('./routes/api'))
 
 app.use('/', (req, res) => {
-    res.render('property')
+    res.render('login')
 })
 
 app.use((err, req, res, next) => {
