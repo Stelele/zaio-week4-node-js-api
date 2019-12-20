@@ -9,7 +9,7 @@ const session = require('express-session')
 
 const app = express()
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 5000
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -40,9 +40,7 @@ app.use(passport.session())
 app.use('/auth', require('./routes/auth'))
 app.use('/api', require('./routes/api'))
 
-app.use('/', (req, res) => {
-    res.render('login')
-})
+
 
 app.use((err, req, res, next) => {
     res.status(422).send({error: err.message})
