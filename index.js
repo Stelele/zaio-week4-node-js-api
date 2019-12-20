@@ -41,7 +41,7 @@ app.use('/auth', require('./routes/auth'))
 app.use('/api', require('./routes/api'))
 
 app.use('/', (req, res) => {
-    res.send(req.session)
+    res.render('property')
 })
 
 app.use((err, req, res, next) => {
