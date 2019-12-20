@@ -5,7 +5,9 @@ const PropertySchema = new Schema({
     name: String,
     address: String,
     price: Number,
-    img: String
+    img: String,
+	agent: String,
+	description: String
 })
 
 const Property = mongoose.model('mock24-property', PropertySchema)

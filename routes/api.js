@@ -40,7 +40,10 @@ router.post('/property',upload.single('img'), (req, res, next) => {
         name: req.body.name,
         address: req.body.address,
         price: req.body.price,
-        img: req.file.path
+        img: req.headers.host +'/'+ req.file.path,
+		agent: req.body.agent,
+		details: req.body.details,
+		description: req.body.description
     }).save((err, newProperty) => {
         if(err) res.send(err)
 
