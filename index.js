@@ -5,6 +5,7 @@ const keys = require('./config/keys')
 const cookieSession = require('cookie-session')
 const passport = require('passport')
 const passportSetup = require('./config/passport-setup')
+const session = require('express-session')
 
 const app = express()
 
@@ -27,6 +28,7 @@ mongoose.connect(keys.mongodb.connectionString, (err) => {
 
 mongoose.Promise = global.Promise
 
+app.use(session({secret: keys.session.cookieKey}))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json()) 
 
@@ -37,6 +39,10 @@ app.use(passport.session())
 //initialize routes
 app.use('/auth', require('./routes/auth'))
 app.use('/api', require('./routes/api'))
+
+app.use('/', (req, res) => {
+    res.send(req.session)
+})
 
 app.use((err, req, res, next) => {
     res.status(422).send({error: err.message})

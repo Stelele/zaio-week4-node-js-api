@@ -35,7 +35,7 @@ passport.use(new GoogleStrategy({
                     done(null, newUser)
                 })
             }
-        })
+        }).catch(done)
     })
 )
 passport.use(new FacebookStrategy({
@@ -59,6 +59,6 @@ passport.use(new FacebookStrategy({
                 done(null, newUser)
             })
         }
-    })
+    }).catch(done)
 })
 )

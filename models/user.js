@@ -7,7 +7,10 @@ const UserSchema = new Schema({
     fullName: String,
     googleID: String,
     facebookID: String,
-    email: String,
+    email: {
+        type: String,
+        unique: true
+    },
     password: String
 })
 
