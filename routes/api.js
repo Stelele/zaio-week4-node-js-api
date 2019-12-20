@@ -82,7 +82,7 @@ router.put('/property/:id', urlParser,upload.single('img'),(req, res, next) => {
     
 })
 
-router.delete('/property/:id',authCheck,  (req, res, next) => {
+router.delete('/property/:id',  (req, res, next) => {
     var DeletedProperty = Property.findByIdAndDelete(req.params.id, (err, deletedProp) => {
         if(err) res.send(err)
 
@@ -92,7 +92,7 @@ router.delete('/property/:id',authCheck,  (req, res, next) => {
 
 })
 
-router.get("/property",authCheck,  (req, res, next) => {
+router.get("/property",  (req, res, next) => {
     var allPropertis = Property.find({}, (err,allProp) => {
         if(err) res.send(err)
 
@@ -100,7 +100,7 @@ router.get("/property",authCheck,  (req, res, next) => {
     })
 })
 
-router.get("/property/:id",authCheck,  (req, res, next) => {
+router.get("/property/:id",  (req, res, next) => {
     var uniqueProperty = Property.findById(req.params.id, (err, property) => {
         if(err) res.send(err)
 
