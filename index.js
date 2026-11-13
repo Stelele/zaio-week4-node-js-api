@@ -39,6 +39,7 @@ app.use(passport.session())
 //initialize routes
 app.use('/auth', require('./routes/auth'))
 app.use('/api', require('./routes/api'))
+app.use('/reports', require('./routes/reports'))
 
 app.use('/', (req, res) => {
     res.render('login')
